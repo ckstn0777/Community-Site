@@ -11,6 +11,7 @@
 백엔드
 - Nodejs v12.18.3
 - MariaDB v10.5
+- AWS EC2 사용해서 구축
 
 ### UI
 1. 메인화면
