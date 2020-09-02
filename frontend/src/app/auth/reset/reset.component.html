@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row" style="justify-content: center">
+    <div class="col-lg-5 col-md-8 col-10 mt-5">
+      <h1>Reset Password</h1>
+      <form
+        class="form-signin"
+        [formGroup]="resetFormGroup"
+        (ngSubmit)="onSubmit()"
+        novalidate
+      >
+        <small>Enter your new password for your account</small>
+
+        <div formGroupName="passwordGroup">
+          <h6 class="mt-4">New Password</h6>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+          />
+          <mat-error
+            *ngIf="
+              resetFormGroup.get('passwordGroup').get('password').invalid &&
+              resetFormGroup.get('passwordGroup').get('password').touched
+            "
+            >Please enter a valid password.</mat-error
+          >
+
+          <h6 class="mt-4">Confirm Password</h6>
+          <input
+            type="password"
+            id="confirmPassword"
+            class="form-control"
+            formControlName="confirmPassword"
+          />
+          <mat-error
+            *ngIf="
+              resetFormGroup.get('passwordGroup').invalid &&
+              resetFormGroup.get('passwordGroup').touched
+            "
+            >It doesn't match.</mat-error
+          >
+        </div>
+        <button
+          class="btn btn-primary mt-5"
+          type="submit"
+          [disabled]="resetFormGroup.invalid"
+          [class.disabled]="resetFormGroup.invalid"
+        >
+          Rest Password
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

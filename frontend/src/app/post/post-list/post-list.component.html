@@ -1,0 +1,89 @@
+<div class="post">
+  <!--제목-->
+  <h3 class="title">{{post.title}}</h3>
+  <!--작성자/아바타 + 작성일자-->
+  <div class="write">
+    <div>
+      <div>
+        <img [src]="post?.avatar" class="avatar mr-2">
+        <small class="text-muted">{{post.writer}}</small>
+      </div>
+      <small class="text-muted">{{post.post_date | date: "yyyy-MM-dd hh:mm a":"UTC"}}</small>
+      <div *ngIf="userNickname === post.writer" style="display: inline-block;">
+        <small class="text-muted span-text"><a [routerLink]="['/post', post.post_no]"class="modify">modify</a></small>
+        <small class="text-muted span-text"><a (click)="onDelete(post.post_no)" class="delete">delete</a></small>
+      </div>
+      <!--
+      <div class="content-identity">
+        <i class="far fa-eye"></i> {{post?.views}} views
+      </div>
+      -->
+    </div>
+  </div>
+  <hr>
+  <div class="content" [innerHTML]="post.content | sanitizeHtml"></div>
+  <div class="voteblame">
+      <a class="ab-btn-vote" (click)="onVote(1)">
+        <span class="vote-top">
+          <i class="far fa-thumbs-up" *ngIf="!isLike; else elseBlock1"></i>
+          <ng-template #elseBlock1><i class="fas fa-thumbs-up"></i></ng-template>
+          <small class="voted-count">{{likeHate?.total_like}}</small>
+        </span>
+        <span class="vote-bottom">Likes</span>
+      </a>
+      <a class="ab-btn-vote ml-3" (click)="onVote(-1)">
+          <span class="vote-top">
+            <i class="far fa-thumbs-down" *ngIf="!isHate; else elseBlock2"></i>
+            <ng-template #elseBlock2><i class="fas fa-thumbs-down"></i></ng-template>
+            <small class="voted-count">{{likeHate?.total_hate}}</small>
+          </span>
+          <span class="vote-bottom">Hates</span>
+        </a>
+  </div>
+  <!--댓글-->
+  <!--cols는 이 요소의 너비를 나타내는 속성으로, 한 줄에 몇 글자까지 들어가게 할 지를 정합니다.
+  rows는 textarea의 높이를 나타내는 속성으로, 이 요소의 높이가 몇 줄로 나타날지를 정해줍니다. -->
+  <h5 class="mt-5">Comments {{post.reply_cnt}}</h5>
+  <div class="comments">
+    <form #replyForm="ngForm" (ngSubmit)="onNgReplySubmit(replyForm)" novalidate>
+      <textarea name="reply" required ngModel #reply="ngModel"></textarea>
+      <button class="btn register" type="submit" [disabled]="replyForm.invalid">send</button>
+    </form>
+  </div>
+  <div class="article-comments">
+    <ul class="reply" *ngFor="let reply of replys; let i = index">
+      <li>
+        <div class="comment-box">
+          <div class="info">{{reply.writer}}</div>
+          <div class="text-wrap">{{reply.content}}</div>
+          <div class="info-base">{{reply.reply_date | date: "yyyy-MM-dd hh:mm":"UTC"}} | <a style="cursor: pointer;" (click)="onReplyDelete(i, reply.reply_no)">delete</a></div>
+          <div class="box-tool">
+            <a class="box-btn-reply" (click)="selectItem(reply.reply_no)" style="cursor: pointer;">
+              <strong class="reply_txt">reply {{reply.count}}</strong>
+              <span class="reply_cnt"></span>
+            </a>
+          </div>
+          <div class="reply-comments comments" [class.active]="reply.reply_view">
+            <ul class="reply" *ngFor="let rreply of rreplys; let i = index">
+              <li>
+                <div class="comment-box">
+                  <div class="info">{{rreply.writer}}</div>
+                  <div class="text-wrap">{{rreply.content}}</div>
+                  <div class="info-base">{{rreply.reply_date | date: "yyyy-MM-dd hh:mm":"UTC"}} | <a style="cursor: pointer;" (click)="onReplyDelete(i, rreply.reply_no, reply.reply_no)">delete</a></div>
+                </div>
+              </li>
+            </ul>
+            <form #rreplyForm="ngForm" (ngSubmit)="onNgRReplySubmit(rreplyForm, reply.reply_no)" novalidate>
+              <!--input tpye=hidden은 어떻게 값을 전달하는 거지. 전달이 안됨. -->
+              <textarea name="rreply" required ngModel #rreply="ngModel"></textarea>
+              <button class="btn register" type="submit" [disabled]="rreplyForm.invalid">send</button>
+            </form>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="addButton" class="add-button">
+    <button class="btn btn-primar" (click)="onloadReply()">더보기</button>
+  </div>
+</div>

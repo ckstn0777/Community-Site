@@ -1,0 +1,153 @@
+<div class="text-center mt-5 container">
+  <form
+    class="form-signin"
+    [formGroup]="signupForm"
+    (ngSubmit)="onSubmit()"
+    novalidate
+  >
+    <div class="text-field">
+      <h3 class="field-group-name">개인정보</h3>
+      <hr />
+      <div class="form-group">
+        <label for="lastName">성</label>
+        <input
+          type="text"
+          id="lastName"
+          class="form-control"
+          formControlName="lastName"
+        />
+        <mat-error
+          *ngIf="
+            signupForm.get('lastName').invalid &&
+            signupForm.get('lastName').touched
+          "
+          >Please enter a valid last name.</mat-error
+        >
+      </div>
+      <div class="form-group">
+        <label for="firstName">이름</label>
+        <input
+          type="text"
+          id="firstName"
+          class="form-control"
+          formControlName="firstName"
+        />
+        <mat-error
+          *ngIf="
+            signupForm.get('firstName').invalid &&
+            signupForm.get('firstName').touched
+          "
+          >Please enter a valid first name.</mat-error
+        >
+      </div>
+      <div class="form-group">
+        <label for="avatar" class="mr-2">성별 : </label>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="gender"
+            value="male"
+            formControlName="gender"
+            id="male"
+            checked
+          />
+          <label class="form-check-label" for="inlineRadio1" for="male"
+            >남자</label
+          >
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="gender"
+            value="female"
+            formControlName="gender"
+            id="female"
+          />
+          <label class="form-check-label" for="inlineRadio2" for="female"
+            >여자</label
+          >
+        </div>
+      </div>
+      <h3 class="field-group-name">계정</h3>
+      <hr />
+      <div class="form-group" style="text-align: left">
+        <label for="email">이메일*</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+        />
+        <mat-error
+          *ngIf="
+            signupForm.get('email').invalid && signupForm.get('email').touched
+          "
+          >Please enter a valid email.</mat-error
+        >
+      </div>
+      <div formGroupName="passwordGroup">
+        <div class="form-group">
+          <label for="password" class="m-0">비밀번호*</label><br />
+          <small
+            >비밀번호는 최소 6글자 특수문자, 대소문자 알파벳 형태여야
+            합니다.</small
+          >
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+          />
+          <mat-error
+            *ngIf="
+              signupForm.get('passwordGroup').get('password').invalid &&
+              signupForm.get('passwordGroup').get('password').touched
+            "
+            >Please enter a valid password.</mat-error
+          >
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">비밀번호 확인*</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            class="form-control"
+            formControlName="confirmPassword"
+          />
+          <mat-error
+            *ngIf="
+              signupForm.get('passwordGroup').invalid &&
+              signupForm.get('passwordGroup').touched
+            "
+            >It doesn't match.</mat-error
+          >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="nickname">닉네임*</label>
+        <input
+          type="text"
+          id="nickname"
+          class="form-control"
+          formControlName="nickName"
+        />
+        <mat-error
+          *ngIf="
+            signupForm.get('nickName').invalid &&
+            signupForm.get('nickName').touched
+          "
+          >Please enter a valid nick name(at least 3 characters).</mat-error
+        >
+      </div>
+      <button
+        class="btn btn-lg btn-block mt-5"
+        type="submit"
+        [disabled]="signupForm.invalid"
+      >
+        Sign in
+      </button>
+    </div>
+  </form>
+</div>

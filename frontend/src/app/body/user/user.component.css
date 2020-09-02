@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  padding: 20px;
+  height: 100%;
+  margin-top:100px;
+}
+.tab {
+  display: flex;
+}
+.tab a {
+  flex-basis: 50%;
+  text-align: center;
+  color: white;
+  height: 50px;
+  line-height: 50px;
+  text-decoration: none;
+  background-color: #a39f9f;
+  font-size: 1.2rem;
+}
+.active {
+  background-color: #FF9000 !important;
+}
+
+@media (max-width: 580px) {
+  :host {
+    margin-top:0px;
+  }
+  * {
+    font-size: 0.85rem !important;
+  }
+}

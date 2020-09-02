@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="tab">
+    <a routerLink="/user/setting" [class.active]="kind==='setting'">User Settings</a>
+    <a routerLink="/user/post" [class.active]="kind==='post'">Your Post</a>
+  </div>
+  <app-user-setting *ngIf="kind==='setting'"></app-user-setting>
+  <app-user-post *ngIf="kind==='post'"></app-user-post>
+</div>

@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  position: fixed;
+  top: 80px;
+  width: 12%;
+}
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  :host {
+    width: 14%;
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 768px) {
+  :host {
+    position: static;
+    width: 100%;
+    margin-top: 64px;
+  }
+}
+.nav-subtitle {
+  padding-top: 20px;
+}
+
+.nav-item {
+  width: 100%;
+}
+
+ul > li {
+  padding: 0.5rem 1rem;
+  display: flex;
+}
+
+ul > li:hover,
+ul > li > a:active {
+  background-color: #ffe3e3;
+  border-radius: 25px / 25px;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.nav-icon {
+  flex-basis: 10%;
+  display: inline-block;
+  line-height: 40px;
+}
+.nav-icon i {
+  font-size: 1.2rem;
+}
+.nav-link {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  height: 100%;
+  font-weight: bold;
+  flex-basis: 90%;
+}

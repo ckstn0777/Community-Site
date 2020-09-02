@@ -1,0 +1,11 @@
+
+nav {
+  background-color: white !important;
+}
+.banner {
+  max-width:160px;
+  height: 600px;
+  margin-top: 130px;
+  margin-left : 20px;
+  cursor: pointer;
+}

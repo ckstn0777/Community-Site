@@ -1,0 +1,38 @@
+<!--본문...-->
+<div class="container" style="height: 100%">
+  <div class="row container-row" style="height: 100%">
+    <!--이 nav는 태블릿 이상일때만 보임...스마트폰에서는 이게 app-haader에 들어감. 로그인,회원가입창일시에는 안보임-->
+    <nav class="col-md-3 col-lg-2 bg-light d-none d-sm-block">
+      <app-nav></app-nav>
+    </nav>
+    <div class="col-md-9 col-lg-9 container-main">
+      <hr />
+      <!--헤더에 있는 검색창이 메인화면으로 이동-->
+      <div class="mobile-search d-sm-block d-md-none mt-1">
+        <form
+          class="form-inline"
+          #searchForm="ngForm"
+          (ngSubmit)="onNgSubmit(searchForm)"
+          navalidate
+        >
+          <input
+            class="form-control search col-9"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            name="searchInput"
+            ngModel
+            #searchInput
+            required
+          />
+          <button class="btn btn-outline-success sbtn col-3" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+      <main #contentArea>
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  </div>
+</div>

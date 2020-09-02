@@ -1,0 +1,156 @@
+.logo {
+  max-width: 100%;
+  max-height: 50px;
+}
+.header-left a {
+  line-height: 60px;
+}
+@media (max-width: 800px) {
+  mat-toolbar-row {
+    padding: 0 1%;
+  }
+  .header-left {
+    padding-right: 0;
+  }
+  .header-right {
+    padding: 0;
+  }
+  .header-center {
+    padding: 0;
+  }
+}
+@media (max-width: 576px) {
+  .example-toolbar a {
+    line-height: 50px;
+  }
+  .logo {
+    max-width: 80%;
+    max-height: 50px;
+  }
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  mat-toolbar-row {
+    padding: 0 3%;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1800px) {
+  mat-toolbar-row {
+    padding: 0 5%;
+  }
+}
+@media (min-width: 1800px) {
+  mat-toolbar-row {
+    padding: 0 10%;
+  }
+}
+
+.sbtn {
+  width: 15%;
+  padding: 0.375rem 1%;
+}
+
+input {
+  width: 60% !important;
+  margin-right: 10px;
+}
+.header-right {
+  text-align: right;
+}
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background-color: #ffe3e3;
+}
+.login,
+.signup {
+  margin-left: 10px;
+}
+.login {
+  border: solid 1px #da77f2;
+  color: #da77f2;
+}
+.signup {
+  background-color: #eebefa;
+  color: white;
+}
+.user {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: 50% 50%;
+  overflow: hidden;
+}
+.user_btn {
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  box-shadow: none;
+}
+.user_btn:hover {
+  background: none;
+}
+/*-----------------휴대폰 적용 CSS---------------------------------- */
+.example-toolbar {
+  display: flex;
+  flex-flow: row wrap;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.example-is-mobile .example-toolbar {
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+  width: 100%;
+}
+
+.example-toolbar > h1 {
+  display: inline;
+  line-height: 56px;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+.example-is-mobile .example-sidenav-container {
+  flex: 1 0 auto;
+}
+mat-icon {
+  color: white;
+}
+mat-sidenav {
+  width: 220px;
+  padding: 10px;
+}
+
+example-toolbar button,
+h1 {
+  flex-grow: 1;
+}
+.spacer {
+  flex-grow: 5;
+}
+
+.nav-icon {
+  flex-basis: 10%;
+  display: inline-block;
+  line-height: 40px;
+}
+.nav-icon i {
+  font-size: 1.2rem;
+}
+.nav-link {
+  display: inline-block;
+  text-decoration: none;
+  height: 100%;
+  font-weight: bold;
+  flex-basis: 90%;
+}

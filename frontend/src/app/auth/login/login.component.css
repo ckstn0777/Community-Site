@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  margin-top: 250px;
+}
+@media (max-width: 580px) {
+  :host {
+    margin-top: 0px;
+  }
+}
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.text-center {
+  text-align: center !important;
+  height: 100%;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.font-weight-normal {
+  font-weight: 400 !important;
+}
+
+mat-spinner {
+  margin: auto;
+  z-index: 2;
+}
+.logo {
+  max-width: 300px;
+}
+button {
+  background-color: #e599f7;
+  color: white;
+}

@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  background-color: lightgray;
+  padding: 20px;
+  min-height: 400px;
+}
+.mat-headline {
+  font-family: 'Anton', sans-serif;
+  margin: 0;
+}
+.catergory {
+  font-family: Georgia;
+  margin: 10px 0 20px 0;
+  text-align: center;
+  background-color: #E5E8E8;
+  border-radius: 10px / 10px;
+  padding: 10px 0;
+}
+.newly-post-content:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.post-title {
+  font-size: 1.1rem;
+  font-family: 'Bree Serif', serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 42px;
+}
+.post-content {
+  font-size: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 580px) {
+  * {
+    font-size: 0.95rem !important;
+  }
+  .card-text {
+    min-height: 40px;
+  }
+}
+

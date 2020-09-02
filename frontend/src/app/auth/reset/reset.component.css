@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  margin-top:100px;
+}
+
+.logo {
+  max-width: 300px;
+}
+h1, h6{
+  font-weight: bold;
+}
+.row {
+  margin:0px;
+}
+span {
+  color:#FF9000;
+}
+@media (max-width: 580px) {
+  :host {
+    margin-top:0px;
+  }
+  * {
+    font-size: 0.9rem;
+  }
+  .logo {
+    max-width: 200px;
+  }
+}

@@ -1,0 +1,46 @@
+<div class="user-post">
+  <h4 class="mt-5">Post</h4>
+  <div
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [scrollWindow]="true"
+        (scrolled)="onScrollDown()"
+        style="width:100%;"
+        class="newly-post-parent"
+      >
+    <div class="col-12 newly-post-content" *ngFor="let post of posts">
+      <div class="post-cotent">
+          <!--(좋아요)-->
+        <div class="post-left">
+          <button>
+            <svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36">
+              <path d="M2 26h32L18 10 2 26z"></path>
+            </svg>
+          </button>
+          <div class="votes">{{post.likes}}</div>
+          <button>
+            <svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36">
+              <path d="M2 10h32L18 26 2 10z"></path>
+            </svg>
+          </button>
+        </div>
+        <!--(대표이미지)-->
+        <div class="post-center">
+          <img [src]=post.img_path *ngIf="post.img_path?true:false">
+        </div>
+        <!--( 제목 / 내용/ 작성자 )-->
+        <div class="post-right">
+          <div class="title">
+            <a [routerLink]="['/catergory', post.catergory, post.post_no]"><div [innerHTML]="post.title"></div></a>
+          </div>
+          <div class="content" [innerHTML]=post.curtContent></div>
+          <div class="writer">
+            <small class="text-muted">{{post.post_date | date: "yyyy-MM-dd hh:mm a"}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

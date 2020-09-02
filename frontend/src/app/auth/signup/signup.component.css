@@ -1,0 +1,99 @@
+:host {
+  display: block;
+  margin-top: 100px;
+}
+@media (max-width: 580px) {
+  :host {
+    margin-top: 0px;
+  }
+}
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.logo {
+  width: 300px;
+  height: 200px;
+}
+.text-center {
+  text-align: center !important;
+  height: 100%;
+}
+
+.form-signin {
+  padding: 15px;
+  margin: auto;
+}
+
+.font-weight-normal {
+  font-weight: 400 !important;
+}
+
+.text-field {
+  padding: 50px 10%;
+  border-radius: 10px;
+  background-color: #f2f3f4;
+}
+.form-group {
+  text-align: left;
+}
+.form-group label {
+  font-weight: 600;
+}
+.field-group-name {
+  width: 100%;
+  text-align: left;
+}
+input[type="file"] {
+  visibility: hidden;
+}
+button {
+  background-color: #e599f7;
+  color: white;
+}
+.scroll {
+  overflow-y: scroll;
+  height: 180px;
+  margin-top: 18px;
+  border: 1px #bbb solid;
+}
+.policy_cont {
+  padding: 12px;
+  line-height: 20px;
+  color: #555;
+  text-align: left;
+  font-size: 0.9em;
+}
+.policy_check {
+  text-align: right;
+  margin-top: 17px;
+  font-size: 11.65px;
+  color: #333;
+}
+.checkbox {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 16px;
+}
+.checkbox input[type="checkbox"],
+label {
+  cursor: pointer;
+}
+@media (max-width: 575.98px) {
+  form * {
+    font-size: 90%;
+  }
+  .form-signin {
+    width: 90%;
+  }
+}
+@media (min-width: 575.98px) and (max-width: 1000px) {
+  .form-signin {
+    width: 60%;
+  }
+}
+@media (min-width: 1000px) {
+  .form-signin {
+    width: 40%;
+  }
+}

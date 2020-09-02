@@ -1,0 +1,96 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+/* You can add global styles to this file, and also import other style files */
+body, html {
+  height: 100% !important;
+}
+/*이유는 innerHTML을 통해 HTML 태그와 css를 넣을 경우 angular가 캡슐화를 위해 생성한 식별값이 적용되지 않기 때문입니다.
+  더 좋은 방법이 있을지 모르지만 전 빠르게 일을 하기 위해 angular 전역적으로 사용되는 style.css 에 필요한 class를 추가하여 해결했습니다*/
+
+/* 네이버 블로그 처럼 이미지가 커도 블로그 범위를 넘어가지 않고 비율 유지시키기. 현재는 이미지 크기가 크면 범위를 넘어가고,
+width:100%으로 하면 이미지 작은 것도 커지고...*/
+.content img{
+  max-width: 100%;
+}
+.content p{
+  word-break: break-all;
+}
+span.marker {
+  background-color: yellow;
+  font-weight: bold;
+}
+@media (max-width: 575.98px) {
+  app-popular-post {
+    padding: 0 !important;
+  }
+  .container-fluid {
+    padding:0 2px;
+  }
+
+  .container {
+    padding:0 2px;
+  }
+
+  nav {
+    padding: 0 !important;
+  }
+
+  app-popular-post .row {
+    margin: 0 !important;
+  }
+  app-popular-post .container {
+    padding: 0 !important;
+  }
+  .container-row {
+    margin: 0 !important;
+  }
+  .app-popular-post {
+    padding: 0 !important;
+  }
+  .container-main {
+    padding: 0 !important;
+  }
+  .hot-post {
+    margin: 0 !important;
+  }
+  .newly-post {
+    margin: 0 !important;
+  }
+}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .sbtn {
+    font-size: 60% !important;
+  }
+  .container {
+    max-width: 600px;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .container {
+    max-width: 900px;
+  }
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .container {
+    max-width: 1100px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1600px;
+  }
+}
+/*
+.mat-drawer-container{
+  z-index: 999;
+  overflow: visible;
+  height: 75px;
+}
+*/

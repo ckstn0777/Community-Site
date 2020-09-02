@@ -1,0 +1,13 @@
+<div class="sidebar-sticky d-none d-sm-block">
+  <ul class="nav flex-column">
+    <li *ngFor="let cg of catergory; let i = index" class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/catergory', cg.fileNav]"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >{{ cg.name }}</a
+      >
+    </li>
+  </ul>
+</div>

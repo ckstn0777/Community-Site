@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="content">
+    <form [formGroup]="postForm" (submit)="onNgSubmit()" novalidate>
+      <div class="row justify-content-md-center">
+        <div class="post-header">
+          <label class="input-group-text title-label">Title</label>
+          <input
+            type="text"
+            class="form-control title-input mr-5"
+            formControlName="title"
+            placeholder="Post Title"
+            >
+          <div class="input-group catergory-select">
+            <select class="custom-select" formControlName="catergory">
+              <option [ngValue]="null" disabled>Choose a catergory</option>
+              <option *ngFor="let cg of catergory" [ngValue]="cg.name"> <!--이게 주의할 점이 body로 넘겨줄때는 name, queryString으로 넘겨줄때는 fileNav로 해야함...-->
+                {{ cg.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <span *ngIf="postForm.get('title').invalid && postForm.get('title').touched" style="color:red;">The title is three to fifty characters long.</span>
+      <br/>
+      <div class="row justify-content-md-center">
+        <!--
+          <div [ngxSummernote]="config" (summernoteModelChange)="myEventHanlder($event)"></div>
+        -->
+        <!--
+        <div [ngxSummernote]="config" (imagePath)="getImagePath($event)" name="content" #content="ngModel" required ngModel></div>
+        -->
+        <div [ngxSummernote]="config" formControlName="content"></div>
+      </div>
+      <div class="post-footer">
+        <button class="btn save" [disabled]="postForm.invalid" [class.disabled]="postForm.invalid">save</button>
+      </div>
+    </form>
+    <!--<p>Form value: {{ postForm.value | json }}</p> -->
+    <!--
+    <div [innerHTML]="content">
+    </div>
+    -->
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row" style="justify-content: center">
+    <div class="col-lg-5 col-md-8 col-10 mt-5">
+      <h1>Forgot Password</h1>
+      <form
+        class="form-signin"
+        #emailForm="ngForm"
+        (ngSubmit)="onNgSubmit(emailForm)"
+        novalidate
+        *ngIf="!sumitBool"
+      >
+        <h6 class="mt-4">Your email address</h6>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-control"
+          placeholder="name@email.com"
+          required
+          ngModel
+          #email="ngModel"
+        />
+        <mat-error *ngIf="email.invalid && email.touched"
+          >Please enter a valid email.</mat-error
+        >
+        <button
+          class="btn btn-primary mt-5"
+          type="submit"
+          [disabled]="emailForm.invalid"
+          [class.disabled]="emailForm.invalid"
+        >
+          Send instruction
+        </button>
+      </form>
+      <br />
+      <small *ngIf="sumitBool"
+        >You should receive an email shortly. <br />
+        If you still need assistance, contact <span>dtk@u-medi.com</span></small
+      >
+    </div>
+  </div>
+</div>

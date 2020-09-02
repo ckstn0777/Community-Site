@@ -1,0 +1,183 @@
+<!--태블릿용, 데스크탑용 헤더-->
+<mat-toolbar class="d-none d-sm-block">
+  <mat-toolbar-row>
+    <div
+      class="col-2 header-left"
+      style="font-weight: 700; cursor: pointer"
+      routerLink="/"
+    >
+      개발자's Community
+    </div>
+    <div class="col-6 header-center">
+      <form
+        class="form-inline"
+        #searchForm="ngForm"
+        (ngSubmit)="onNgSubmit(searchForm)"
+        navalidate
+      >
+        <input
+          class="form-control search"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          name="searchInput"
+          ngModel
+          #searchInput
+          required
+        />
+        <button mat-stroked-button class="signup" type="submit">검색</button>
+      </form>
+    </div>
+    <div class="col-4 header-right">
+      <button
+        mat-stroked-button
+        class="login"
+        routerLink="/login"
+        *ngIf="!userIsAuthenticated"
+      >
+        로그인
+      </button>
+      <button
+        mat-flat-button
+        class="signup"
+        routerLink="/signup"
+        *ngIf="!userIsAuthenticated"
+      >
+        회원가입
+      </button>
+
+      <button
+        mat-button
+        [matMenuTriggerFor]="user"
+        *ngIf="userIsAuthenticated"
+        class="user_btn"
+      >
+        <img [src]="userData.avatar" class="user" />
+      </button>
+      <mat-menu #user="matMenu">
+        <button mat-menu-item routerLink="/user/setting">
+          <mat-icon>account_box</mat-icon>
+          User settings
+        </button>
+        <button mat-menu-item routerLink="/user/post">
+          <mat-icon>work</mat-icon>
+          Your post
+        </button>
+        <!--
+        <div *ngFor="let email of adminEmail">
+          <div *ngif="email?.email === 'dongun8943@gmail.com' ">
+            <button mat-menu-item routerLink="/ifix/document">
+              <mat-icon>work</mat-icon>
+              iFix Document
+            </button>
+          </div>
+        </div>
+        -->
+        <!--
+        <button mat-menu-item routerLink="/ifix/document">
+          <mat-icon>work</mat-icon>
+          iFix Document
+        </button>
+        -->
+        <button mat-menu-item (click)="onLogout()">
+          <mat-icon>exit_to_app</mat-icon>
+          Sign out
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!--모바일용 헤더-->
+<div
+  *ngIf="mobileQuery.matches"
+  [class.example-is-mobile]="mobileQuery.matches"
+>
+  <mat-toolbar class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div
+      class="col-2 header-left"
+      style="font-weight: 700; cursor: pointer"
+      routerLink="/"
+    >
+      개발자's Community
+    </div>
+    <span class="spacer"> </span>
+    <button
+      class="catergory-button"
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+      *ngIf="!userIsAuthenticated"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>person</mat-icon>
+        <span><a routerLink="/login">login</a></span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>person_add</mat-icon>
+        <span><a routerLink="/signup">signup</a></span>
+      </button>
+    </mat-menu>
+    <button
+      mat-button
+      [matMenuTriggerFor]="user"
+      *ngIf="userIsAuthenticated"
+      class="user_btn"
+    >
+      <img [src]="userData.avatar" class="user" />
+    </button>
+    <mat-menu #user="matMenu">
+      <button mat-menu-item routerLink="/user/setting">
+        <mat-icon>account_box</mat-icon>
+        User settings
+      </button>
+      <button mat-menu-item routerLink="/user/post">
+        <mat-icon>work</mat-icon>
+        Your post
+      </button>
+      <button mat-menu-item (click)="onLogout()">
+        <mat-icon>exit_to_app</mat-icon>
+        Sign out
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+  <mat-sidenav-container
+    class="example-sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+  >
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
+      <mat-nav-list
+        *ngFor="let cg of catergory; let i = index"
+        class="nav-item"
+        (click)="sidenavClose()"
+      >
+        <div class="nav-icon">
+          <i [class]="cg.className"></i>
+        </div>
+        <a
+          class="nav-link"
+          [routerLink]="['/catergory', cg.fileNav]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          style="font-size: 0.8rem"
+          >{{ cg.name }}</a
+        >
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <!--모바일용 바디-->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

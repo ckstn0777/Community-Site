@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="mb-3 mat-headline">
+    <h3 style="font-size: 1.5rem !important" class="pt-2">인기 게시글</h3>
+  </div>
+  <div class="row">
+    <div class="col-md-6 popular-post" *ngFor="let post of popularPost">
+      <div class="col-12 post-catergory">
+        <h5 class="catergory">{{ post.catergory }}</h5>
+      </div>
+      <div
+        class="row no-gutters hot-post-content"
+        [routerLink]="['/catergory', post.catergory, post.post_no]"
+      >
+        <div class="col-4 hot-post-image">
+          <img
+            [src]="post.img_path"
+            class="img-fluid"
+            *ngIf="post.img_path; else elseBlock"
+          />
+          <ng-template #elseBlock
+            ><img class="img-fluid" src="../../../assets/images/logo3.jpg"
+          /></ng-template>
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <h6 class="card-title">{{ post.title }}</h6>
+            <p class="card-text">{{ post.curtContent }}</p>
+            <p class="card-text">
+              <small class="text-muted">{{
+                post.post_date | date: "yyyy-MM-dd hh:mm a":"UTC"
+              }}</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

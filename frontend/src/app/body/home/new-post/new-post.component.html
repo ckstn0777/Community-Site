@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row mb-3">
+    <h3 class="mat-headline">새 게시글</h3>
+  </div>
+  <div class="row">
+    <div
+      class="col-lg-4 col-md-6 col-sm-12 m-0 post"
+      *ngFor="let post of newlyPost"
+    >
+      <h5 class="catergory">{{ post.catergory }}</h5>
+      <div
+        class="newly-post-content"
+        [routerLink]="['/catergory', post.catergory, post.post_no]"
+      >
+        <h4 class="post-title">{{ post.title }}</h4>
+        <p class="post-content">{{ post.curtContent }}</p>
+      </div>
+    </div>
+  </div>
+</div>

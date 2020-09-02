@@ -1,0 +1,8 @@
+<!--공통 해더...-->
+<app-header></app-header>
+<!-- <app-ifix-document></app-ifix-document> -->
+
+<!--태블릿, 데스크탑 용 바디-->
+<router-outlet *ngIf="mobileQuery.matches" [class.example-is-mobile]="mobileQuery.matches"></router-outlet>
+<!-- 
+<data-table></data-table> -->

@@ -1,0 +1,80 @@
+<div class="container mt-3">
+  <div class="description clearfix">
+    <div class="post-hash">
+      <mat-chip-list>
+        <mat-chip *ngFor="let hashTag of catergory[0].hashTag"
+          >#{{ hashTag }}</mat-chip
+        >
+      </mat-chip-list>
+    </div>
+    <div class="space"></div>
+    <button
+      class="btn btn-info post-button"
+      routerLink="/post"
+      [queryParams]="{ catergory: catergory[0].name }"
+      *ngIf="isAuth"
+    >
+      <span style="position: relative; top: -2px">
+        <mat-icon style="position: relative; top: 5px">post_add</mat-icon>
+        <span>New Post</span>
+      </span>
+    </button>
+  </div>
+  <div class="row hot-post">
+    <div class="col-12 hot-post-title">
+      <h4>{{ catergory[0].name }} 인기 게시글</h4>
+    </div>
+    <div class="col-12 hot-post-content">
+      <div class="row">
+        <div
+          class="col-lg-4 col-sm-6 pt-3 pb-3"
+          *ngFor="let post of popularPost"
+        >
+          <mat-card>
+            <mat-card-header>
+              <div class="mat-card-avatar">
+                <!-- <img [src]="post.avatar" /> -->
+              </div>
+              <div class="mat-card-header-text">
+                <mat-card-title
+                  ><a
+                    [routerLink]="[
+                      '/catergory',
+                      catergory[0].fileNav,
+                      post.post_no
+                    ]"
+                    >{{ post.title }}</a
+                  ></mat-card-title
+                >
+                <mat-card-subtitle>{{ post.writer }}</mat-card-subtitle>
+              </div>
+            </mat-card-header>
+            <div class="mat-card-body" style="line-height: 200px">
+              <img
+                class="mat-card-image"
+                mat-card-image
+                [src]="post.img_path"
+                *ngIf="post.img_path; else elseBlock"
+              />
+              <ng-template #elseBlock
+                ><img
+                  class="mat-card-image"
+                  mat-card-image
+                  src="../../../assets/images/logo3.jpg"
+              /></ng-template>
+            </div>
+            <mat-card-content>
+              <p _ngcontent-tkn-c193="">{{ post.content }}</p>
+            </mat-card-content>
+            <!--
+              <mat-card-actions>
+                <button class="btn btn-primary">Like</button>
+              </mat-card-actions>
+              -->
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div></div>

@@ -1,0 +1,88 @@
+<div class="user-setting">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div class="row mt-5">
+    <div class="col-lg-5">
+      <div class="user-image">
+        <h4 class="m-0 user-image-h4">Image</h4>
+        <div class="user-image-content">
+          <img [src]="userData.avatar" class="avatar" *ngIf="!imageNew">
+          <div *ngIf="mode==='update'">
+            <img [src]="imagePreview" class="avatar" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+            <button type="button" class="btn btn-outline-dark" (click)="filePicker.click()">
+              <i class="fas fa-plus"></i> Add Profile Picture
+            </button>
+            <input type="file" #filePicker (change)="onImagePicked($event)">
+            <button type="button" class="btn btn-outline-dark">default picture</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div>
+        <h4>Account</h4>
+        <table class="table table-bordered" *ngIf="mode==='select'">
+          <tbody>
+            <tr>
+              <th scope="row">Email address</th>
+              <td>{{userData.email}}</td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="2">Change password</th>
+              <td>New password</td>
+            </tr>
+            <tr>
+              <td>Confirm new password</td>
+            </tr>
+          </tbody>
+        </table>
+        <div formGroupName="passwordGroup" *ngIf="mode==='update'">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th scope="row">Email address</th>
+              <td>{{userData.email}}</td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="2">Change password</th>
+              <td><input type="password" id="password" class="form-control" formControlName="password" placeholder="New password"></td>
+            </tr>
+            <tr>
+              <td><input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder="Confirm new password"></td>
+            </tr>
+          </tbody>
+        </table>
+        <small style="color:red;">Please enter at least 6 characters including case and special characters.</small>
+        </div>
+      </div>
+      <div class="mt-5">
+        <h4>Profile</h4>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th scope="row">Nickname</th>
+              <td *ngIf="mode==='select'">{{userData.nickname}}</td>
+              <td *ngIf="mode==='update'"><input type="text" id="nickname" class="form-control" formControlName="nickName" [value]="userData.nickname"></td>
+            </tr>
+            <tr>
+              <th scope="row">First name</th>
+              <td>{{userData.firstname}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Last name</th>
+              <td>{{userData.lastname}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Gender</th>
+              <td>{{userData.gender}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="button-div">
+    <button type="button" class="btn update" *ngIf="mode==='select'"(click)="onUpdate()">Update</button>
+    <button class="btn update" *ngIf="mode==='update'" type="submit" [disabled]="form.invalid">Save</button>
+  </div>
+  </form>
+</div>

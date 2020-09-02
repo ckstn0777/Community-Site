@@ -1,0 +1,15 @@
+<!--[infiniteScrollDistance]="2"라는 뜻은 80%(100% - 20%)가 스크롤되었을 때 이벤트가 트리거됨-->
+<!-- infiniteScrollThrottle: 이 이벤트는 사용자가 스크롤을 중지한 후 이 몇 밀리초 후에 트리거된다 -->
+<div
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    (scrolled)="onScrollDown()"
+    style="width:100%;"
+    class="newly-post-parent"
+  >
+  <app-catergory-popular></app-catergory-popular>
+  <div>
+    <img src="../../assets/images/banner2.jpg" class="d-lg-none banner" [routerLink]="['/catergory', 'Camp Humphreys', '799']">
+  </div>
+  <app-catergory-newly></app-catergory-newly>
+</div>
